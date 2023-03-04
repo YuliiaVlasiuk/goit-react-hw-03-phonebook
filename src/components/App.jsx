@@ -14,29 +14,23 @@ export class App extends Component {
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
     filter: '',
- 
   };
 
-
-  componentDidMount (){
-
-    const savedContacts=localStorage.getItem('contacts')
-    if(savedContacts !== null ){
-      const parsedContacts=JSON.parse(savedContacts)
-      this.setState({contacts:parsedContacts})
-      return
-    } 
-    this.setState({contacts:this.state.contacts})
-     
+  componentDidMount() {
+    const savedContacts = localStorage.getItem('contacts');
+    if (savedContacts !== null) {
+      const parsedContacts = JSON.parse(savedContacts);
+      this.setState({ contacts: parsedContacts });
+      return;
     }
+    this.setState({ contacts: this.state.contacts });
+  }
 
-    componentDidUpdate(prevProps, prevState) {
-      if (prevState.contacts !== this.state.contacts) {
-        localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
-      }
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.contacts !== this.state.contacts) {
+      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
     }
-
-
+  }
 
   addContact = newContact => {
     const arrayOfContactsName = [];
@@ -100,7 +94,6 @@ export class App extends Component {
     );
   }
 }
-
 
 Notiflix.Notify.init({
   position: 'center-top',
